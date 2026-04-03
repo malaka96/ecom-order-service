@@ -2,31 +2,5 @@ spring:
   application:
     name: order
 
-  datasource:
-    url: jdbc:postgresql://localhost:5432/order_ecom_db # can use postgres username that used in docker-compose file as db name. because default a database is being created using that name
-    username: postgres
-    password: ${DB_PASSWORD}
-  jpa:
-    database: POSTGRESQL
-    show-sql: true
-    hibernate:
-      ddl-auto: create
-    database-platform: org.hibernate.dialect.PostgreSQLDialect # to make sure queries are generated properly
-
-#  datasource:
-#    url: jdbc:h2:mem:ecom_db
-#    driverClassName: org.h2.Driver
-#    username: ${DB_USERNAME}
-#    password: ${DB_PASSWORD}
-#
-#  jpa:
-#    show-sql: true
-#    database-platform: org.hibernate.dialect.H2Dialect
-#
-#  h2:
-#    console:
-#      enabled: true
-#      path: /h2-console
-
-server:
-  port: 8083
+  config:
+    import: optional:configserver:http://localhost:8888
